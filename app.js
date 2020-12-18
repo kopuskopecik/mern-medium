@@ -6,16 +6,19 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 
-
+const cors = require("cors");
 
 const connectDB =require("./models/connectDB")
 connectDB();
 
 //var indexRouter = require('./routes/index');
+
+
+
 var usersRouter = require('./routes/users');
 
 var app = express();
-
+app.use(cors());
 
 
 // view engine setup
@@ -29,7 +32,8 @@ app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+app.use('/api', usersRouter);
 
 // production
 if (process.env.NODE_ENV === "production") {

@@ -1,26 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import "./App.css";
+import {useEffect, useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      Blabla
-    </div>
-  );
+  const [userList, SetUserList] = useState([]);
+
+  const getUsers = async () => {
+    try {
+      const {data} = await axios.get("http://localhost:5000/api/users");
+      SetUserList(data);
+      console.log(data);
+
+    }
+    catch {
+      console.log("User cant be retrieved.")
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+
+
+  return <div className="App">
+    Ana Sayfa
+  </div>;
 }
 
 export default App;

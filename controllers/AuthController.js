@@ -24,3 +24,13 @@ exports.authRegister = async (req, res) => {
 exports.authLogin = (req, res) => {
   res.send("LoginRegister");
 };
+
+exports.users = async (req, res) => {
+  console.log("haydaaaa")
+  users = await User.find({})
+
+  if (User.length > 0){
+    console.log("Users are listed seccuesfully");
+    res.send(users);
+  }
+}
