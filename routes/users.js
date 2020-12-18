@@ -1,9 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
+const AuthRouter = require("./AuthRouter");
+
+console.log("user.js")
+
+
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// /users/
+router.use('/', AuthRouter);
+
+//router.use('/', AuthRouter);
+
+//router.use('/', AuthRouter);
 
 module.exports = router;
