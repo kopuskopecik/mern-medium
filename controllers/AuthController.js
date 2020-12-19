@@ -1,20 +1,28 @@
 const User = require("../models/User");
+var bcrypt = require('bcryptjs');
+
+
 
 exports.authRegister = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
-  console.log(req.body);
+   // TODO1 şifreleme
+  const salt = bcrypt.genSaltSync(10);
+  const hashedpassword = bcrypt.hashSync(password, salt);
+  //console.log(hashedpassword);
 
 
-  // TODO1 şifreleme
-  // TODO2 Duplicate Check
+  
+
+ 
+  
   // TODO3 Validation 
 
   const user = new User({
     firstName,
     lastName,
     email,
-    password,
+    password: hashedpassword,
   });
   await user.save();
 
