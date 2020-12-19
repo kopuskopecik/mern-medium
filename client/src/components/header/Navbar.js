@@ -48,7 +48,7 @@ const Header = (props) => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={openmodel}>
+              <NavLink>
                 Sign In
               </NavLink>
             </NavItem>
