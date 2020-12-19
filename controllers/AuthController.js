@@ -1,10 +1,19 @@
 const User = require("../models/User");
-var bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
+const { body, validationResult } = require('express-validator');
+
 
 
 
 exports.authRegister = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
+
+  // TODO3 Validation 
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
 
    // TODO1 şifreleme
   const salt = bcrypt.genSaltSync(10);
@@ -21,14 +30,17 @@ exports.authRegister = async (req, res) => {
     
     // TODO Redirect to Login Page
     
-    return res.send("User is already signed up")
+    return res.status(400).json({
+      errors: [{message:"User already exists"}]
+    })
+    
     //return res.redirect('/to');
   }
   
 
  
   
-  // TODO3 Validation 
+  
 
   const user = new User({
     firstName,
