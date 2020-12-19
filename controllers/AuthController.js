@@ -9,10 +9,6 @@ exports.authRegister = async (req, res) => {
 
   // TODO3 Validation
   checkFunction(req, res);
-  // const errors = validationResult(req);
-  // if (!errors.isEmpty()) {
-  //   return res.status(400).json({ errors: errors.array() });
-  // }
 
   // TODO1 şifreleme
   const salt = bcrypt.genSaltSync(10);
@@ -45,11 +41,19 @@ exports.authRegister = async (req, res) => {
   res.send("AuthRegister");
 };
 
-exports.authLogin = (req, res) => {
+exports.authLogin = async (req, res) => {
+  const { email, password } = req.body;
 
+  checkFunction(req, res);
 
+  const checkeduser = await User.findOne({ email }).exec();
+  if (!checkeduser) {
+    return res.status(400).json({
+      errors: [{ message: "User doesn't exist!" }],
+    });
+  }
 
-  res.send("LoginRegister");
+  res.send(email + " " + password);
 };
 
 exports.users = async (req, res) => {
