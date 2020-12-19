@@ -1,6 +1,7 @@
 import axios from "axios";
 import "./App.css";
 import { useEffect, useState } from "react";
+import AppRouter from "./router/Router";
 
 function App() {
   const [userList, SetUserList] = useState([]);
@@ -19,15 +20,11 @@ function App() {
     getUsers();
   }, []);
 
-  return <div className="App">
-
-<ul className="list-group">
-{userList.map(user => <li className="list-group-item">{user.firstName}</li>)}
-  
-  
-</ul>
-
-  </div>;
+  return (
+    <>
+      <AppRouter />
+    </>
+  );
 }
 
 export default App;
