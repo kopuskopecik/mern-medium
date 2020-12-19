@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../components/header/Navbar";
 import Main from "../pages/Main";
-import Signup from "../pages/Signup";
+// import Signup from "../pages/Signup";
 // import Signin from "../pages/Signin";
 // import ForgotPassword from "../pages/ForgotPassword";
 // import BookDetail from "../pages/BookDetail";
@@ -17,7 +17,7 @@ function AppRouter() {
        <Navbar />
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route exact path="/signup" component={Signup} />
+        {/* <Route exact path="/signup" component={Signup} /> */}
         {/* <Route exact path="/signin" component={Signin} /> */}
         {/* <Route exact path="/books" component={BookList} />
           <Route exact path="/forgot-password" component={ForgotPassword} />

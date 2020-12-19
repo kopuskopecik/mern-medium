@@ -26,26 +26,36 @@ const ModalExample = (props) => {
   return (
     <div>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}> Welcome back</ModalHeader>
         <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+      
           <br />
+          <Button color="secondary" onClick={toggle}>
+            Sign In Google
+          </Button>
+          <hr />
+          <Button color="secondary" onClick={toggle}>
+            Sign In Faceebook
+          </Button>
+          <hr />
+          <Button color="secondary" onClick={toggle}>
+            Sign In Twitter
+          </Button>
+          <hr />
+          <Button color="secondary" onClick={toggle}>
+            Sign In with Apple
+          </Button>
+          <hr />
           <Button color="success" onClick={toggleNested}>
-            Show Nested Modal
+            Sign In with Email
           </Button>
           <Modal
             isOpen={nestedModal}
             toggle={toggleNested}
             onClosed={closeAll ? toggle : undefined}
           >
-            <ModalHeader>Nested Modal title</ModalHeader>
-            <ModalBody>Stuff and things</ModalBody>
+            <ModalHeader>Sign In with Email</ModalHeader>
+            <ModalBody>Enter the email address associated with your account, and we’ll send a magic link to your inbox.</ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={toggleNested}>
                 Done
@@ -58,7 +68,7 @@ const ModalExample = (props) => {
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={toggle}>
-            Do Something
+            Continue
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
             Cancel
