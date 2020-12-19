@@ -1,3 +1,8 @@
+.site-layout-content {
+  background-image: url("https://miro.medium.com/max/770/1*qcAZgT4Sk37MPSTGBH2KUw.png");
+  background-size: cover;
+}
+
 .App {
   text-align: center;
 }
