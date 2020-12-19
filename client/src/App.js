@@ -1,29 +1,14 @@
-import axios from "axios";
 import "./App.css";
-import { useEffect, useState } from "react";
 import AppRouter from "./router/Router";
+import {Provider} from "react-redux";
+import store from "./context/store";
+
 
 function App() {
-  const [userList, SetUserList] = useState([]);
-
-  const getUsers = async () => {
-    try {
-      const { data } = await axios.get("http://localhost:5000/api/users");
-      SetUserList(data);
-      console.log(data);
-    } catch {
-      console.log("User cant be retrieved.");
-    }
-  };
-
-  useEffect(() => {
-    getUsers();
-  }, []);
-
   return (
-    <>
+    <Provider store = {store}>
       <AppRouter />
-    </>
+    </Provider>
   );
 }
 

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../components/header/Navbar";
-// import Main from "../pages/Main";
+import Main from "../pages/Main";
 import Signup from "../pages/Signup";
 // import Signin from "../pages/Signin";
 // import ForgotPassword from "../pages/ForgotPassword";
@@ -12,12 +12,11 @@ import Signup from "../pages/Signup";
 // import Cart from "../pages/Cart";
 
 function AppRouter() {
-  // const { currentUser } = useContext(FirebaseAuthContext);
-  const currentUser = "sdf";
   return (
     <Router>
-      <Navbar />
+      {/* <Navbar /> */}
       <Switch>
+        <Route exact path="/" component={Main} />
         <Route exact path="/signup" component={Signup} />
         {/* <Route exact path="/signin" component={Signin} /> */}
         {/* <Route exact path="/books" component={BookList} />
