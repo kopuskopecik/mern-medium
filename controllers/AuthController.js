@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
+var jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 const checkFunction = require("../helpers/checkFunction");
@@ -51,7 +52,7 @@ exports.authLogin = async (req, res) => {
     return res.status(400).json({
       errors: [{ message: "User doesn't exist!" }],
     });
-  };
+  }
 
   const isPassword = await bcrypt.compare(password, checkeduser.password);
 
@@ -61,12 +62,26 @@ exports.authLogin = async (req, res) => {
     });
   }
 
+  // Token
 
-  res.send(isPassword + " " + password);
+  jwt.sign(
+    { checkeduser },
+    process.env.SECRET_KEY,
+    { expiresIn: 3600 },
+    (err, token) => {
+      console.log(err);
+      console.log(token);
+      if (err) {
+        return res.status(400).json({
+          errors: [{ message: "Invalid credentials!" }],
+        });
+      }
+      res.status(202).json({ token });
+    }
+  );
 };
 
 exports.users = async (req, res) => {
-  console.log("haydaaaa");
   users = await User.find({});
 
   if (User.length > 0) {
