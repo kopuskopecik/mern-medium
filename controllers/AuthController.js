@@ -11,7 +11,19 @@ exports.authRegister = async (req, res) => {
   const hashedpassword = bcrypt.hashSync(password, salt);
   //console.log(hashedpassword);
 
+  // TODO2 Duplicate Check
+  const checkeduser = await User.findOne({email}).exec();
 
+  console.log(checkeduser);
+
+  if (checkeduser) {
+
+    
+    // TODO Redirect to Login Page
+    
+    return res.send("User is already signed up")
+    //return res.redirect('/to');
+  }
   
 
  
