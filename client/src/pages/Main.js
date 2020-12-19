@@ -11,13 +11,11 @@ const dispatch = useDispatch()
 console.log(mymodal);
 
     return (
-        <div>
-            <button onClick = {()=> {
-                dispatch({
-                    type: "TOOGLE"
-                })
-            }}>Tıkla</button>
-        </div>
+        <>
+
+
+        <SignInModal />
+        </>
     )
 }
 

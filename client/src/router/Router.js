@@ -14,7 +14,7 @@ import Signup from "../pages/Signup";
 function AppRouter() {
   return (
     <Router>
-      {/* <Navbar /> */}
+       <Navbar />
       <Switch>
         <Route exact path="/" component={Main} />
         <Route exact path="/signup" component={Signup} />

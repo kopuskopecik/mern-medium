@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Collapse,
   Navbar,
@@ -7,21 +8,26 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   NavbarText,
   Button,
 } from "reactstrap";
 
 // import MediumIcon from "../icons/MediumIcon";
-
+// const mymodal = useSelector(state => state.modal);
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  const dispatch = useDispatch();
 
   const toggle = () => setIsOpen(!isOpen);
 
+  const openModalSignIn = () => {
+    dispatch({ type: "TOOGLE" });
+  };
+ 
+  const openModalSignUp = () => {
+    dispatch({ type: "TOOGLE" });
+  };
   //https://miro.medium.com/max/770/1*qcAZgT4Sk37MPSTGBH2KUw.png
 
   return (
@@ -48,13 +54,11 @@ const Header = (props) => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>
-                Sign In
-              </NavLink>
+              <NavLink href = "#" onClick={openModalSignIn}>Sign In</NavLink>
             </NavItem>
 
             <NavItem>
-              <Button href="https://github.com/reactstrap/reactstrap">
+              <Button onClick={openModalSignUp}>
                 Get Started
               </Button>
             </NavItem>
