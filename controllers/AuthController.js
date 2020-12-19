@@ -51,9 +51,18 @@ exports.authLogin = async (req, res) => {
     return res.status(400).json({
       errors: [{ message: "User doesn't exist!" }],
     });
+  };
+
+  const isPassword = await bcrypt.compare(password, checkeduser.password);
+
+  if (!isPassword) {
+    return res.status(400).json({
+      errors: [{ message: "Invalid credentials!" }],
+    });
   }
 
-  res.send(email + " " + password);
+
+  res.send(isPassword + " " + password);
 };
 
 exports.users = async (req, res) => {
