@@ -26,28 +26,36 @@ const ModalExample = (props) => {
   return (
     <div>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}> Welcome back</ModalHeader>
+        <ModalHeader toggle={toggle} cssModule={{'modal-title': 'w-100 text-center'}}> Welcome back.</ModalHeader>
+        <br />
         <ModalBody>
+<<<<<<< HEAD
           <br />
           <Button color="secondary" onClick={toggle}>
+=======
+          
+         
+          <Button outline color="primary"  onClick={toggle}>
+>>>>>>> 67917efca52d2f3cae0b502030e19e6623a4f466
             Sign In Google
           </Button>
-          <hr />
-          <Button color="secondary" onClick={toggle}>
+         <br />
+          <Button outline color="primary"  onClick={toggle}>
             Sign In Faceebook
           </Button>
-          <hr />
-          <Button color="secondary" onClick={toggle}>
+          <br />
+          <Button outline color="primary"   onClick={toggle}>
             Sign In Twitter
           </Button>
-          <hr />
-          <Button color="secondary" onClick={toggle}>
+          <br />
+          <Button outline color="primary" onClick={toggle}>
             Sign In with Apple
           </Button>
-          <hr />
-          <Button color="success" onClick={toggleNested}>
+          <br />
+          <Button outline color="primary"  onClick={toggleNested}>
             Sign In with Email
           </Button>
+         
           <Modal
             isOpen={nestedModal}
             toggle={toggleNested}
