@@ -29,14 +29,10 @@ const ModalExample = (props) => {
         <ModalHeader toggle={toggle} cssModule={{'modal-title': 'w-100 text-center'}}> Welcome back.</ModalHeader>
         <br />
         <ModalBody>
-<<<<<<< HEAD
-          <br />
-          <Button color="secondary" onClick={toggle}>
-=======
+          
           
          
           <Button outline color="primary"  onClick={toggle}>
->>>>>>> 67917efca52d2f3cae0b502030e19e6623a4f466
             Sign In Google
           </Button>
          <br />
