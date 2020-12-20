@@ -28,7 +28,6 @@ const ModalExample = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}> Welcome back</ModalHeader>
         <ModalBody>
-      
           <br />
           <Button color="secondary" onClick={toggle}>
             Sign In Google
@@ -55,7 +54,10 @@ const ModalExample = (props) => {
             onClosed={closeAll ? toggle : undefined}
           >
             <ModalHeader>Sign In with Email</ModalHeader>
-            <ModalBody>Enter the email address associated with your account, and we’ll send a magic link to your inbox.</ModalBody>
+            <ModalBody>
+              Enter the email address associated with your account, and we’ll
+              send a magic link to your inbox.
+            </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={toggleNested}>
                 Done

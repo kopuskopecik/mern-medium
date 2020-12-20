@@ -76,6 +76,7 @@ exports.authLogin = async (req, res) => {
           errors: [{ message: "Invalid credentials!" }],
         });
       }
+      console.log("HEADERRRRRR", req);
       res.status(202).json({ token });
     }
   );
