@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch,  } from "react-redux";
 import Login from "./Login";
 import ButtonSocial from "./ButtonSocial";
 
@@ -10,19 +10,25 @@ const ModalExample = (props) => {
   const { buttonLabel, className } = props;
 
   const modal = useSelector((state) => state.modal);
+  const nestedModal = useSelector((state) => state.secondModal.nestedModal);
+  const closeAll = useSelector((state) => state.secondModal.closeAll);
+
   const dispatch = useDispatch();
   //const [modal, setModal] = useState({mymodal});
-  const [nestedModal, setNestedModal] = useState(false);
-  const [closeAll, setCloseAll] = useState(false);
+  //const [nestedModal, setNestedModal] = useState(false);
+  //const [closeAll, setCloseAll] = useState(false);
 
   const toggle = () => dispatch({ type: "TOOGLE" });
   const toggleNested = () => {
-    setNestedModal(!nestedModal);
-    setCloseAll(false);
+    dispatch({ type: "NESTED" });
+    //closeAll(false);
+    //setNestedModal(!nestedModal);
+    //setCloseAll(false);
   };
   const toggleAll = () => {
-    setNestedModal(!nestedModal);
-    setCloseAll(true);
+    dispatch({ type: "ALL"});
+    //setNestedModal(!nestedModal);
+    //closeAll(true);
   };
 
   return (
@@ -56,10 +62,10 @@ const ModalExample = (props) => {
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={toggleNested}>
-                Done
+                Back
               </Button>{" "}
               <Button color="secondary" onClick={toggleAll}>
-                All Done
+                OK
               </Button>
             </ModalFooter>
           </Modal>

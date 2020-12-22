@@ -2,7 +2,11 @@ import { createStore } from 'redux';
 import reducer from './reducer';
 
 const initialState = {
-    modal: false
+    modal: false,
+    secondModal: {
+        nestedModal:false,
+        closeAll: false,
+    },
 }
 
 const store = createStore(reducer, initialState);

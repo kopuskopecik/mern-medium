@@ -3,6 +3,8 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { toast } from "react-toastify";
+
 
 const Login = (props) => {
   let history = useHistory();
@@ -27,6 +29,8 @@ const Login = (props) => {
       const errors = error.response?.data?.errors;
       console.log(errors);
       alert(errors[0].msg);
+      //toast(errors[0].msg || "An error occured");
+
     }
   };
 
