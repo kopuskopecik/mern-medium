@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch,  } from "react-redux";
+
 
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { toast } from "react-toastify";
@@ -8,6 +10,7 @@ import { toast } from "react-toastify";
 
 const Login = (props) => {
   let history = useHistory();
+  const dispatch = useDispatch();
 
   const sendForm = async (e) => {
     e.preventDefault();
@@ -23,6 +26,7 @@ const Login = (props) => {
     try {
       const response = await axios.post("/api/login", data);
       localStorage.setItem("token", response.data.token);
+      dispatch({ type: "ALL"});
       history.push("/");
       console.log(response.data.token);
     } catch (error) {
