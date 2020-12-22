@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
+import Login from "./Login"
 
 const ModalExample = (props) => {
   const { buttonLabel, className } = props;
@@ -61,6 +62,9 @@ const ModalExample = (props) => {
             <ModalBody>
               Enter the email address associated with your account, and we’ll
               send a magic link to your inbox.
+              <hr />
+              <Login />
+
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={toggleNested}>
