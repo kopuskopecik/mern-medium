@@ -25,7 +25,7 @@ exports.authRegister = async (req, res) => {
     // TODO Redirect to Login Page
 
     return res.status(400).json({
-      errors: [{ message: "User already exists" }],
+      errors: [{ msg: "User already exists" }],
     });
 
     //return res.redirect('/to');
@@ -50,7 +50,7 @@ exports.authLogin = async (req, res) => {
   const checkeduser = await User.findOne({ email }).exec();
   if (!checkeduser) {
     return res.status(400).json({
-      errors: [{ message: "User doesn't exist!" }],
+      errors: [{ msg: "User doesn't exist!" }],
     });
   }
 
@@ -58,7 +58,7 @@ exports.authLogin = async (req, res) => {
 
   if (!isPassword) {
     return res.status(400).json({
-      errors: [{ message: "Invalid credentials!" }],
+      errors: [{ msg: "Invalid credentials!" }],
     });
   }
 
@@ -73,7 +73,7 @@ exports.authLogin = async (req, res) => {
       console.log(token);
       if (err) {
         return res.status(400).json({
-          errors: [{ message: "Invalid credentials!" }],
+          errors: [{ msg: "Invalid credentials!" }],
         });
       }
       console.log("HEADERRRRRR", req);

@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
-import Login from "./Login"
+import Login from "./Login";
+import ButtonSocial from "./ButtonSocial";
 
 const ModalExample = (props) => {
   const { buttonLabel, className } = props;
@@ -27,32 +28,20 @@ const ModalExample = (props) => {
   return (
     <div>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle} cssModule={{'modal-title': 'w-100 text-center'}}> Welcome back.</ModalHeader>
+        <ModalHeader
+          toggle={toggle}
+          cssModule={{ "modal-title": "w-100 text-center" }}
+        >
+          {" "}
+          Welcome back.
+        </ModalHeader>
         <br />
         <ModalBody>
-          
-          
-         
-          <Button outline color="primary"  onClick={toggle}>
-            Sign In Google
-          </Button>
-         <br />
-          <Button outline color="primary"  onClick={toggle}>
-            Sign In Faceebook
-          </Button>
-          <br />
-          <Button outline color="primary"   onClick={toggle}>
-            Sign In Twitter
-          </Button>
-          <br />
-          <Button outline color="primary" onClick={toggle}>
-            Sign In with Apple
-          </Button>
-          <br />
-          <Button outline color="primary"  onClick={toggleNested}>
-            Sign In with Email
-          </Button>
-         
+          <ButtonSocial
+            color = "danger"
+            onClick={toggleNested}
+            text="Sign in with email"
+          ></ButtonSocial>
           <Modal
             isOpen={nestedModal}
             toggle={toggleNested}
@@ -64,7 +53,6 @@ const ModalExample = (props) => {
               send a magic link to your inbox.
               <hr />
               <Login />
-
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={toggleNested}>
@@ -76,14 +64,6 @@ const ModalExample = (props) => {
             </ModalFooter>
           </Modal>
         </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={toggle}>
-            Continue
-          </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
-            Cancel
-          </Button>
-        </ModalFooter>
       </Modal>
     </div>
   );
