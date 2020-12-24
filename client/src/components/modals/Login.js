@@ -27,6 +27,7 @@ const Login = (props) => {
       const response = await axios.post("/api/login", data);
       localStorage.setItem("token", response.data.token);
       dispatch({ type: "ALL"});
+      dispatch({ type: "TOKEN-UP"});
       history.push("/");
       console.log(response.data.token);
     } catch (error) {

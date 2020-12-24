@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Collapse,
@@ -16,9 +16,9 @@ import {
 // const mymodal = useSelector(state => state.modal);
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const isLogged = useSelector((state) => state.isLogged);
   
   const dispatch = useDispatch();
-
   const toggle = () => setIsOpen(!isOpen);
 
   const openModalSignIn = () => {
@@ -28,6 +28,21 @@ const Header = (props) => {
   const openModalSignUp = () => {
     dispatch({ type: "TOOGLE" });
   };
+
+  const signOut = () => {
+    console.log("Signout");
+    localStorage.removeItem("token");
+    dispatch({type: "TOKEN-DOWN"});
+
+  }
+
+  useEffect(()=>{
+    let token = localStorage.getItem("token");
+    console.log(token);
+    if(token){
+      dispatch({type: "TOKEN-UP"});
+    }
+  },[])
   //https://miro.medium.com/max/770/1*qcAZgT4Sk37MPSTGBH2KUw.png
 
   return (
@@ -54,7 +69,7 @@ const Header = (props) => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href = "#" onClick={openModalSignIn}>Sign In</NavLink>
+            {!isLogged ? <NavLink href = "#" onClick={openModalSignIn}>Sign In</NavLink> : <NavLink href = "#" onClick={signOut}>Sign Out</NavLink>}
             </NavItem>
 
             <NavItem>
