@@ -24,8 +24,10 @@ const Header = (props) => {
   };
  
   const openModalSignUp = () => {
-    dispatch({ type: "TOOGLE" });
+    dispatch({ type: "TOOGLE-SIGNUP" });
   };
+
+ 
 
   const signOut = () => {
     console.log("Signout");
@@ -69,12 +71,12 @@ const Header = (props) => {
             <NavItem>
             {!isLogged ? <NavLink href = "#" onClick={openModalSignIn}>Sign In</NavLink> : <NavLink href = "#" onClick={signOut}>Sign Out</NavLink>}
             </NavItem>
-
-            <NavItem>
+            {isLogged ? null :             <NavItem>
               <Button color= "dark" onClick={openModalSignUp}>
                 Get Started
               </Button>
-            </NavItem>
+            </NavItem>}
+
           </Nav>
         </Collapse>
       </Navbar>

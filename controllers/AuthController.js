@@ -6,7 +6,7 @@ const User = require("../models/User");
 const checkFunction = require("../helpers/checkFunction");
 
 exports.authRegister = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { email, password } = req.body;
 
   // TODO3 Validation
   checkFunction(req, res);
@@ -32,8 +32,8 @@ exports.authRegister = async (req, res) => {
   }
 
   const user = new User({
-    firstName,
-    lastName,
+    //firstName,
+    //lastName,
     email,
     password: hashedpassword,
   });

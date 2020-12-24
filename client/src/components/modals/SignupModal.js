@@ -1,32 +1,32 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
-import React, { useState } from "react";
+import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { useSelector, useDispatch,  } from "react-redux";
-import Login from "./Login";
+import Signup from "./Signup";
 import ButtonSocial from "./ButtonSocial";
 
-const ModalExample = (props) => {
+const SignUpModal = (props) => {
   const { buttonLabel, className } = props;
 
-  const modal = useSelector((state) => state.modal);
-  const nestedModal = useSelector((state) => state.secondModal.nestedModal);
-  const closeAll = useSelector((state) => state.secondModal.closeAll);
+  const modal = useSelector((state) => state.modalSignup);
+  const nestedModal = useSelector((state) => state.signupModal.nestedModal);
+  const closeAll = useSelector((state) => state.signupModal.closeAll);
 
   const dispatch = useDispatch();
   //const [modal, setModal] = useState({mymodal});
   //const [nestedModal, setNestedModal] = useState(false);
   //const [closeAll, setCloseAll] = useState(false);
 
-  const toggle = () => dispatch({ type: "TOOGLE" });
+  const toggle = () => dispatch({ type: "TOOGLE-SIGNUP" });
   const toggleNested = () => {
-    dispatch({ type: "NESTED" });
+    dispatch({ type: "NESTED-S" });
     //closeAll(false);
     //setNestedModal(!nestedModal);
     //setCloseAll(false);
   };
   const toggleAll = () => {
-    dispatch({ type: "ALL"});
+    dispatch({ type: "ALL-S"});
     //setNestedModal(!nestedModal);
     //closeAll(true);
   };
@@ -39,27 +39,26 @@ const ModalExample = (props) => {
           cssModule={{ "modal-title": "w-100 text-center" }}
         >
           {" "}
-          Welcome back.
+          SignUp
         </ModalHeader>
         <br />
         <ModalBody>
           <ButtonSocial
             color = "danger"
             onClick={toggleNested}
-            text="Sign in with email"
+            text="Sign Up with email"
           ></ButtonSocial>
           <Modal
             isOpen={nestedModal}
             toggle={toggleNested}
             onClosed={closeAll ? toggle : undefined}
           >
-            <ModalHeader>Sign In with Email</ModalHeader>
+            <ModalHeader>Sign Up with Email</ModalHeader>
             <ModalBody>
               Enter the email address associated with your account, and we’ll
               send a magic link to your inbox.
               <hr />
-              <Login />
-              
+              <Signup />
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={toggleNested}>
@@ -76,4 +75,4 @@ const ModalExample = (props) => {
   );
 };
 
-export default ModalExample;
+export default SignUpModal;

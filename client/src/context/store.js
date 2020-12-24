@@ -7,6 +7,11 @@ const initialState = {
         nestedModal:false,
         closeAll: false,
     },
+    modalSignup: false,
+    signupModal: {
+        nestedModal:false,
+        closeAll: false,
+    },
     isLogged: false
 }
 

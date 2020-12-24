@@ -12,6 +12,17 @@ export default function reducer(state, action) {
       state.secondModal.closeAll = true;
       state.secondModal.nestedModal = !state.secondModal.nestedModal;
       return { ...state };
+    case "NESTED-S":
+      state.signupModal.closeAll = false;
+      state.signupModal.nestedModal = !state.signupModal.nestedModal;
+      return { ...state };
+    case "ALL-S":
+      state.signupModal.closeAll = true;
+      state.signupModal.nestedModal = !state.signupModal.nestedModal;
+      return { ...state };
+      case "TOOGLE-SIGNUP":
+        state.modalSignup = !state.modalSignup;
+        return { ...state };
     case "TOKEN-UP":
       state.isLogged = true;
       return { ...state };
