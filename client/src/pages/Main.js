@@ -26,7 +26,7 @@ const Main = () => {
         </Button>
       </div>
       :
-      <p>Profile Page</p>
+      <p>---Profile Page---</p>
       }
 
       <SignInModal />
