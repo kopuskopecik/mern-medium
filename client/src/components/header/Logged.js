@@ -22,7 +22,7 @@ const Logged = (props) => {
 
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-          {user?.firstName}
+          {user?.email}
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem>Option 1</DropdownItem>

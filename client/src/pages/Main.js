@@ -2,10 +2,9 @@ import React from "react";
 import SignInModal from "../components/modals/SignInModal";
 import SignUpModal from "../components/modals/SignupModal";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Row, Col, Button } from "reactstrap";
+import {Button } from "reactstrap";
 // import '../App.css';
 const Main = () => {
-  const mymodal = useSelector((state) => state.modal);
   const isLogged = useSelector((state) => state.isLogged);
   const dispatch = useDispatch();
 
