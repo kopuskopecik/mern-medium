@@ -9,7 +9,8 @@ import {
 } from "reactstrap";
 
 const Logged = (props) => {
-  const { signOut } = props;
+  const { signOut, user } = props;
+  console.log(user);
   return (
     <>
       <NavItem>
@@ -21,7 +22,7 @@ const Logged = (props) => {
 
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-          Options
+          {user?.firstName}
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem>Option 1</DropdownItem>

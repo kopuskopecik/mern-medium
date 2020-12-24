@@ -12,7 +12,7 @@ const initialState = {
         nestedModal:false,
         closeAll: false,
     },
-    isLogged: false
+    isLogged: false,
 }
 
 const store = createStore(reducer, initialState);

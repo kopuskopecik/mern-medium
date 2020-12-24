@@ -4,12 +4,15 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from "reactstrap";
 
 import LogOut from "./LogOut";
 import Logged from "./Logged";
+import {fetchData} from "../../helpers/fetchData";
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  
   const isLogged = useSelector((state) => state.isLogged);
-
   const dispatch = useDispatch();
+  
   const toggle = () => setIsOpen(!isOpen);
 
   const openModalSignIn = () => {
@@ -26,12 +29,20 @@ const Header = (props) => {
     dispatch({ type: "TOKEN-DOWN" });
   };
 
-  useEffect(() => {
+  const  fetchToken = async () => {
     let token = localStorage.getItem("token");
     console.log(token);
     if (token) {
       dispatch({ type: "TOKEN-UP" });
+      const data = await fetchData("api/profile", token)
+      setUser(data);
+      console.log(user);
+
     }
+  }
+
+  useEffect(() => {
+    fetchToken();
   }, []);
   //https://miro.medium.com/max/770/1*qcAZgT4Sk37MPSTGBH2KUw.png
 
@@ -51,7 +62,7 @@ const Header = (props) => {
                 openModalSignUp={openModalSignUp}
               />
             ) : (
-              <Logged signOut={signOut} />
+              <Logged signOut={signOut} user = {user}/>
             )}
           </Nav>
         </Collapse>
