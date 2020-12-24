@@ -12,8 +12,6 @@ import {
   Button,
 } from "reactstrap";
 
-// import MediumIcon from "../icons/MediumIcon";
-// const mymodal = useSelector(state => state.modal);
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isLogged = useSelector((state) => state.isLogged);
@@ -47,10 +45,10 @@ const Header = (props) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar color="warning" light expand="md">
         <NavbarBrand href="/">
           {/* <MediumIcon /> */}
-          Medium
+          <b>Medium</b>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -73,7 +71,7 @@ const Header = (props) => {
             </NavItem>
 
             <NavItem>
-              <Button onClick={openModalSignUp}>
+              <Button color= "dark" onClick={openModalSignUp}>
                 Get Started
               </Button>
             </NavItem>
