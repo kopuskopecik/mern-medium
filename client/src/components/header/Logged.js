@@ -5,30 +5,38 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
 } from "reactstrap";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Logged = (props) => {
   const { signOut, user } = props;
   console.log(user);
   return (
     <>
-      <NavItem>
-        <NavLink href="#" onClick={signOut}>
-          {" "}
-          Sign out{" "}
-        </NavLink>
-      </NavItem>
-
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-          {user?.email}
+          <FontAwesomeIcon icon={faUser} />
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem>Option 1</DropdownItem>
-          <DropdownItem>Option 2</DropdownItem>
+          <DropdownItem> {user?.email}</DropdownItem>
+          <DropdownItem divider />          
+          <DropdownItem>Write a story</DropdownItem>
+          <DropdownItem>Stories</DropdownItem>
+          <DropdownItem>Stats</DropdownItem>
+          <DropdownItem>Design your profile</DropdownItem>
+          <DropdownItem>Settings</DropdownItem>
           <DropdownItem divider />
-          <DropdownItem>Reset</DropdownItem>
+          <DropdownItem>Reading list</DropdownItem>
+          <DropdownItem>Publicatioons</DropdownItem>
+          <DropdownItem>Control your recommandations</DropdownItem>
+          <DropdownItem>Medium partner program</DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem>Become a member</DropdownItem>
+          <DropdownItem>Help</DropdownItem>
+          <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     </>
