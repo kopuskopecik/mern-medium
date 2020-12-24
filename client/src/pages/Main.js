@@ -8,7 +8,7 @@ const Main = () => {
   const mymodal = useSelector((state) => state.modal);
   const dispatch = useDispatch();
 
-  console.log(mymodal);
+  const toggle = () => dispatch({ type: "TOOGLE-SIGNUP" });
 
   return (
    <div>
@@ -18,7 +18,7 @@ const Main = () => {
               Read and share new perspectives on just about any topic.
               Everyone’s welcome. Learn more.
             </p>
-            <Button outline color="secondary">
+            <Button outline color="secondary" onClick = {toggle}>
               Get Started
             </Button>
           </div>

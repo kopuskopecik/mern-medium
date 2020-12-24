@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from "reactstrap";
-
-import LogOut from "./LogOut";
-import Logged from "./Logged";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarText,
+  Button,
+} from "reactstrap";
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,13 +52,36 @@ const Header = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            {!isLogged ? (
-              <LogOut
-                openModalSignIn={openModalSignIn}
-                openModalSignUp={openModalSignUp}
-              />
-            ) : (
-              <Logged signOut={signOut} />
+            <NavItem>
+              <NavLink href="/components/">Our Story</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://github.com/reactstrap/reactstrap">
+                Memberhip
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://github.com/reactstrap/reactstrap">
+                Write
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              {!isLogged ? (
+                <NavLink href="#" onClick={openModalSignIn}>
+                  Sign In
+                </NavLink>
+              ) : (
+                <NavLink href="#" onClick={signOut}>
+                  Sign Out
+                </NavLink>
+              )}
+            </NavItem>
+            {isLogged ? null : (
+              <NavItem>
+                <Button color="dark" onClick={openModalSignUp}>
+                  Get Started
+                </Button>
+              </NavItem>
             )}
           </Nav>
         </Collapse>
